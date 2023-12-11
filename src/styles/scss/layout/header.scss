@@ -5,7 +5,11 @@
 
     border-right: 2px solid var(--primary50);
 
-    // flex: 1 0 20%;
+    overflow-y: auto;
+
+    min-height: 100dvh;
+
+    flex: 1 0 250px;
 
     .header__title {
         color: var(--primary);
@@ -20,6 +24,8 @@
             font-size: 2.4rem;
             font-weight: 500;
 
+            padding: 0 1.3rem;
+
             margin-bottom: 0.8rem;
         }
 
@@ -32,6 +38,8 @@
             list-style: none;
 
             .header__nav-item {
+                min-width: fit-content;
+
                 display: flex;
                 align-items: center;
 
@@ -49,6 +57,8 @@
                     width: 3.2rem;
                     height: 3.2rem;
 
+                    flex: 0 0 3.2rem;
+
                     border-radius: 12px;
 
                     background-color: black;
@@ -57,6 +67,8 @@
                 button {
                     color: var(--text);
 
+                    flex: 0 0 auto;
+
                     border: none;
                     background: transparent;
 
@@ -64,6 +76,16 @@
                     font-weight: 400;
 
                     cursor: inherit;
+                }
+            }
+
+            .header__nav-item:first-of-type {
+                .header__nav-icon {
+                    background-color: #04060475;
+                }
+
+                button {
+                    color: #04060475;
                 }
             }
 
