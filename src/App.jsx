@@ -6,10 +6,6 @@ import { useState, useEffect } from "react";
 function App() {
     const [activeSpace, setActiveSpace] = useState(0);
 
-    useEffect(() => {
-        console.log(activeSpace);
-    }, [activeSpace]);
-
     return (
         <main>
             <div className="app_container">

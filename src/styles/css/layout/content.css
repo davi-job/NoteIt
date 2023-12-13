@@ -5,16 +5,15 @@
   overflow-y: auto;
 }
 .content .content__title {
-  font-size: 4.6rem;
+  font-size: 3.6rem;
   font-weight: 600;
   text-decoration: dashed underline var(--accent);
-  margin-bottom: 4.6rem;
+  margin-bottom: 3.2rem;
 }
 .content .content__notes-container {
   display: flex;
   flex-wrap: wrap;
   width: fit-content;
-  margin: 0 auto;
   gap: 4.6rem 6.8rem;
 }
 .content .content__notes-container .content__note {
@@ -26,7 +25,7 @@
   height: 30rem;
 }
 .content .content__notes-container .content__note .content__note-title {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   margin-bottom: 1.6rem;
   margin: 0 -2.4rem 1.6rem;
   text-align: center;
@@ -74,11 +73,58 @@
 .content .content__notes-container .content__note .content__note-list .content__note-item input[type=checkbox]:checked::before {
   transform: scale(1);
 }
-.content .content__notes-container .content__note .content__note-list .content__note-item input[type=checkbox]:checked ~ span {
+.content .content__notes-container .content__note .content__note-list .content__note-item input[type=checkbox] ~ div {
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.1s ease-in-out;
+}
+.content .content__notes-container .content__note .content__note-list .content__note-item input[type=checkbox] ~ div:focus,
+.content .content__notes-container .content__note .content__note-list .content__note-item input[type=checkbox] ~ div:hover {
+  outline: 2px solid var(--primary);
+  background-color: var(--accent25);
+}
+.content .content__notes-container .content__note .content__note-list .content__note-item input[type=checkbox] ~ div:focus {
+  text-decoration: none !important;
+  color: var(--text) !important;
+}
+.content .content__notes-container .content__note .content__note-list .content__note-item input[type=checkbox]:checked ~ div {
   text-decoration: line-through;
   text-decoration-color: var(--primary);
   text-decoration-thickness: 2px;
   color: var(--accent);
+}
+.content .content__notes-container .content__note .content__note-list .content__note-add-task {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-left: -2.4rem;
+  padding: 0.6rem 1.2rem 0.6rem 2.4rem;
+  border-radius: 0 8px 8px 0;
+  border: 1px solid transparent;
+  border-left: none;
+  gap: 1.2rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.content .content__notes-container .content__note .content__note-list .content__note-add-task p {
+  color: rgba(4, 6, 4, 0.6666666667);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: inherit;
+}
+.content .content__notes-container .content__note .content__note-list .content__note-add-task p:first-child {
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 2.4rem;
+}
+.content .content__notes-container .content__note .content__note-list .content__note-add-task:hover {
+  background-color: rgba(4, 6, 4, 0.062745098);
+  border: 1px solid rgba(4, 6, 4, 0.3137254902);
+  border-left: none;
+}
+.content .content__notes-container .content__note .content__note-list .content__note-add-task:hover p {
+  color: rgba(4, 6, 4, 0.8666666667);
 }
 .content .content__notes-container .content__add-note {
   display: flex;
