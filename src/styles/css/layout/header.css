@@ -10,6 +10,7 @@
   color: var(--primary);
   font-size: 5.8rem;
   margin-bottom: 2.4rem;
+  margin-left: 1.2rem;
 }
 .header nav .header__nav-title {
   font-size: 2.4rem;
@@ -39,6 +40,12 @@
   flex: 0 0 3.2rem;
   border-radius: 12px;
   background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 500;
 }
 .header nav .header__nav-list .header__nav-item button {
   color: var(--text);
@@ -52,8 +59,12 @@
 .header nav .header__nav-list .header__nav-item:first-of-type .header__nav-icon {
   background-color: rgba(4, 6, 4, 0.4588235294);
 }
+.header nav .header__nav-list .header__nav-item:first-of-type span {
+  font-size: 2.4rem;
+}
 .header nav .header__nav-list .header__nav-item:first-of-type button {
   color: rgba(4, 6, 4, 0.4588235294);
+  font-weight: 600;
 }
 .header nav .header__nav-list .header__nav-item:hover,
 .header nav .header__nav-list .header__nav-item.active {

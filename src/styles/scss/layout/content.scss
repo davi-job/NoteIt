@@ -29,7 +29,7 @@
         gap: 4.6rem 6.8rem;
 
         .content__note {
-            padding: 1.4rem 2.4rem;
+            padding: 0 2.4rem 1.4rem;
 
             border-radius: 12px;
             border: 1px solid var(--primary50);
@@ -42,9 +42,17 @@
             .content__note-title {
                 font-size: 2.2rem;
 
-                margin-bottom: 2.6rem;
+                margin-bottom: 1.6rem;
+                margin: 0 -2.4rem 1.6rem;
 
                 text-align: center;
+
+                background-color: var(--primary15);
+
+                padding: 1.4rem 0 1.2rem;
+
+                border-bottom: 1px solid var(--primary50);
+                border-radius: 12px 12px 0 0;
             }
 
             .content__note-list {
@@ -60,6 +68,57 @@
                     align-items: center;
 
                     gap: 1.2rem;
+
+                    input[type="checkbox"] {
+                        appearance: none;
+                        margin: 0;
+                        padding: 0;
+
+                        font: inherit;
+
+                        color: var(--primary);
+                        background-color: transparent;
+
+                        width: 1.8rem;
+                        height: 1.8rem;
+
+                        border: 2px solid var(--primary);
+
+                        border-radius: 4px;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        cursor: pointer;
+                    }
+
+                    input[type="checkbox"]::before {
+                        content: "";
+
+                        width: 75%;
+                        height: 75%;
+
+                        border-radius: 2px;
+
+                        transform: scale(0);
+
+                        transition: 120ms transform ease-in-out;
+
+                        box-shadow: inset 1em 1em var(--primary);
+                    }
+
+                    input[type="checkbox"]:checked::before {
+                        transform: scale(1);
+                    }
+
+                    input[type="checkbox"]:checked ~ span {
+                        text-decoration: line-through;
+                        text-decoration-color: var(--primary);
+                        text-decoration-thickness: 2px;
+
+                        color: var(--accent);
+                    }
                 }
             }
         }
@@ -69,8 +128,12 @@
             align-items: center;
             justify-content: center;
 
-            background-color: #04060410;
-            border-color: #04060435;
+            background-color: #04060407;
+            border-color: #04060450;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease-in-out;
 
             p {
                 height: 5.8rem;
@@ -85,11 +148,40 @@
 
                 padding: 1.8rem;
 
+                color: #04060450;
+
+                border: 2px solid #04060450;
+                border-radius: 50%;
+
+                transition: inherit;
+            }
+        }
+
+        .content__add-note:hover {
+            background-color: #04060410;
+            border-color: #04060475;
+
+            p {
                 color: #04060475;
 
                 border: 2px solid #04060475;
-                border-radius: 50%;
             }
         }
+    }
+}
+
+.pop-in {
+    animation: popIn 0.3s ease-in-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+    85% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
     }
 }

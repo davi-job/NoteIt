@@ -1,10 +1,14 @@
 import Header from "./components/layout/Header.jsx";
 import Content from "./components/layout/Content.jsx";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
     const [activeSpace, setActiveSpace] = useState(0);
+
+    useEffect(() => {
+        console.log(activeSpace);
+    }, [activeSpace]);
 
     return (
         <main>
@@ -13,7 +17,8 @@ function App() {
                     activeSpace={activeSpace}
                     setActiveSpace={setActiveSpace}
                 />
-                <Content />
+
+                <Content activeSpace={activeSpace} />
             </div>
         </main>
     );
