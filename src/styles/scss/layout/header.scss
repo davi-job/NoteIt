@@ -17,6 +17,7 @@
         font-size: 5.8rem;
 
         margin-bottom: 2.4rem;
+        margin-left: 1.2rem;
     }
 
     nav {
@@ -62,6 +63,15 @@
                     border-radius: 12px;
 
                     background-color: black;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    color: #fff;
+
+                    font-size: 2.2rem;
+                    font-weight: 500;
                 }
 
                 button {
@@ -84,8 +94,14 @@
                     background-color: #04060475;
                 }
 
+                span {
+                    font-size: 2.4rem;
+                }
+
                 button {
                     color: #04060475;
+
+                    font-weight: 600;
                 }
             }
 
