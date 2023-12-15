@@ -1,29 +1,31 @@
 import React from "react";
+
 import { useState, createContext, useEffect } from "react";
+import { v4 as uuid } from "uuid";
 
 let data = {
     spaces: [
         {
-            id: 0,
+            id: uuid(),
             name: "Welcome!",
             color: "#6d6",
             notes: [
                 {
-                    id: 0,
+                    id: uuid(),
                     title: "This is a test note",
                     items: [
                         {
-                            id: 0,
+                            id: uuid(),
                             text: "Task 1",
                             checked: true,
                         },
                         {
-                            id: 1,
+                            id: uuid(),
                             text: "Task 2",
                             checked: false,
                         },
                         {
-                            id: 2,
+                            id: uuid(),
                             text: "Task 3",
                             checked: true,
                         },

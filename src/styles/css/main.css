@@ -163,7 +163,8 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--accent80);
+  background-color: var(--accent);
+  border-radius: 500px;
 }
 
 .header {
@@ -172,7 +173,7 @@ body {
   border-right: 2px solid var(--primary50);
   overflow-y: auto;
   min-height: 100dvh;
-  flex: 1 0 250px;
+  flex: 1 0 300px;
 }
 .header .header__title {
   color: var(--primary);
@@ -225,6 +226,7 @@ body {
 }
 .header nav .header__nav-list .header__nav-item:first-of-type .header__nav-icon {
   background-color: rgba(4, 6, 4, 0.4588235294);
+  color: #fff;
 }
 .header nav .header__nav-list .header__nav-item:first-of-type span {
   font-size: 2.4rem;
@@ -258,6 +260,7 @@ body {
   gap: 4.6rem 6.8rem;
 }
 .content .content__notes-container .content__note {
+  position: relative;
   padding: 0 2.4rem 1.4rem;
   border-radius: 12px;
   border: 1px solid var(--primary50);
@@ -274,6 +277,29 @@ body {
   padding: 1.4rem 0 1.2rem;
   border-bottom: 1px solid var(--primary50);
   border-radius: 12px 12px 0 0;
+}
+.content .content__notes-container .content__note .content__note-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1.3rem;
+  right: 1.1rem;
+  stroke: var(--primary80);
+  fill: var(--primary80);
+  background-color: transparent;
+  border: none;
+}
+.content .content__notes-container .content__note .content__note-delete svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0 12px 0 12px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.content .content__notes-container .content__note .content__note-delete svg:hover {
+  stroke: var(--primary);
+  fill: var(--primary);
 }
 .content .content__notes-container .content__note .content__note-list {
   display: flex;
