@@ -1,14 +1,14 @@
 import Header from "./components/layout/Header.jsx";
 import Content from "./components/layout/Content.jsx";
 
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
+
+import { DataContext } from "./components/contexts/storageData.jsx";
 
 function App() {
-    const [activeSpace, setActiveSpace] = useState(0);
+    const { localData, setLocalData } = useContext(DataContext);
 
-    useEffect(() => {
-        console.log(activeSpace);
-    }, [activeSpace]);
+    const [activeSpace, setActiveSpace] = useState(0);
 
     return (
         <main>

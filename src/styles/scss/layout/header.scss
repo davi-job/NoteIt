@@ -9,12 +9,12 @@
 
     min-height: 100dvh;
 
-    flex: 1 0 250px;
+    flex: 1 0 300px;
 
     .header__title {
         color: var(--primary);
 
-        font-size: 5.8rem;
+        font-size: 6.4rem;
 
         margin-bottom: 2.4rem;
         margin-left: 1.2rem;
@@ -83,7 +83,6 @@
                     background: transparent;
 
                     font-size: 1.6rem;
-                    font-weight: 400;
 
                     cursor: inherit;
                 }
@@ -92,6 +91,7 @@
             .header__nav-item:first-of-type {
                 .header__nav-icon {
                     background-color: #04060475;
+                    color: #fff;
                 }
 
                 span {

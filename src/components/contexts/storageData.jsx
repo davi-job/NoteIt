@@ -1,182 +1,33 @@
 import React from "react";
-import { useState, createContext } from "react";
+
+import { useState, createContext, useEffect } from "react";
+import { v4 as uuid } from "uuid";
 
 let data = {
     spaces: [
         {
-            id: 0,
-            name: "Job Uniformes",
-            color: "#66f",
+            id: uuid(),
+            name: "Welcome!",
+            color: "#6d6",
             notes: [
                 {
-                    id: 0,
-                    title: "Lista de compras",
+                    id: uuid(),
+                    title: "This is a test note",
                     items: [
                         {
-                            text: "Arroz",
-                            checked: false,
-                        },
-                        {
-                            text: "Feijão",
-                            checked: false,
-                        },
-                        {
-                            text: "Macarrão",
-                            checked: false,
-                        },
-                    ],
-                },
-
-                {
-                    id: 1,
-                    title: "Lista de outras coisas",
-                    items: [
-                        {
-                            text: "lorem ipsum",
-                            checked: false,
-                        },
-                        {
-                            text: "Ipsum lorem etc",
-                            checked: false,
-                        },
-                    ],
-                },
-
-                {
-                    id: 2,
-                    title: "To-do",
-                    items: [
-                        {
-                            text: "Check my e-mails",
-                            checked: false,
-                        },
-                        {
-                            text: "Make breakfast",
-                            checked: false,
-                        },
-                        {
-                            text: "Lorem ipsum dolor sit amet",
-                            checked: false,
-                        },
-                    ],
-                },
-            ],
-        },
-
-        {
-            id: 1,
-            name: "Casa da Gente",
-            color: "#f66",
-            notes: [
-                {
-                    id: 0,
-                    title: "Lista de coisas",
-                    items: [
-                        {
-                            text: "coisa 1",
+                            id: uuid(),
+                            text: "Task 1",
                             checked: true,
                         },
                         {
-                            text: "Coisa 2",
+                            id: uuid(),
+                            text: "Task 2",
                             checked: false,
                         },
                         {
-                            text: "Coisa 3",
+                            id: uuid(),
+                            text: "Task 3",
                             checked: true,
-                        },
-                    ],
-                },
-
-                {
-                    id: 1,
-                    title: "Games list",
-                    items: [
-                        {
-                            text: "Red dead redemption 2",
-                            checked: false,
-                        },
-                        {
-                            text: "Lethal company 3: The revenge of the company",
-                            checked: false,
-                        },
-                    ],
-                },
-
-                {
-                    id: 2,
-                    title: "To-do",
-                    items: [
-                        {
-                            text: "Check my e-mails",
-                            checked: false,
-                        },
-                        {
-                            text: "Make breakfast",
-                            checked: false,
-                        },
-                        {
-                            text: "Lorem ipsum dolor sit amet",
-                            checked: false,
-                        },
-                    ],
-                },
-            ],
-        },
-
-        {
-            id: 2,
-            name: "Some name",
-            color: "#6f6",
-            notes: [
-                {
-                    id: 0,
-                    title: "Lista de compras",
-                    items: [
-                        {
-                            text: "Arroz",
-                            checked: false,
-                        },
-                        {
-                            text: "Feijão",
-                            checked: false,
-                        },
-                        {
-                            text: "Macarrão",
-                            checked: false,
-                        },
-                    ],
-                },
-
-                {
-                    id: 1,
-                    title: "Lista de outras coisas",
-                    items: [
-                        {
-                            text: "lorem ipsum",
-                            checked: false,
-                        },
-                        {
-                            text: "Ipsum lorem etc",
-                            checked: false,
-                        },
-                    ],
-                },
-
-                {
-                    id: 2,
-                    title: "To-do",
-                    items: [
-                        {
-                            text: "Check my e-mails",
-                            checked: false,
-                        },
-                        {
-                            text: "Make breakfast",
-                            checked: false,
-                        },
-                        {
-                            text: "Lorem ipsum dolor sit amet",
-                            checked: false,
                         },
                     ],
                 },
@@ -190,7 +41,15 @@ const DataContext = createContext(null);
 
 // Create a provider component
 function DataProvider({ children }) {
-    const [localData, setLocalData] = useState(data);
+    const [localData, setLocalData] = useState(() => {
+        const storedData = localStorage.getItem("localData");
+        return storedData ? JSON.parse(storedData) : data;
+    });
+
+    useEffect(() => {
+        localStorage.setItem("localData", JSON.stringify(localData));
+        console.log("localData updated");
+    }, [localData]);
 
     return (
         <DataContext.Provider value={{ localData, setLocalData }}>

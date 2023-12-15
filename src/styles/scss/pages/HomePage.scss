@@ -11,5 +11,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--accent80);
+    background-color: var(--accent);
+
+    border-radius: 500px;
 }

@@ -1,9 +1,13 @@
 import React from "react";
+
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../contexts/storageData";
+import { v4 as uuid } from "uuid";
+
+import Note from "../components/Note";
 
 function Content({ activeSpace }) {
-    const { localData } = useContext(DataContext);
+    const { localData, setLocalData } = useContext(DataContext);
 
     const [notes, setNotes] = useState(localData.spaces[activeSpace].notes);
 
@@ -14,39 +18,53 @@ function Content({ activeSpace }) {
     return (
         <section className="content">
             <div className="content__container">
-                <h2 className="content__title">
+                <h2
+                    className="content__title"
+                    spellCheck={false}
+                    suppressContentEditableWarning={true}
+                    contentEditable="true"
+                    onInput={(e) => {
+                        localData.spaces[activeSpace].name =
+                            e.currentTarget.textContent;
+                    }}
+                    onBlur={(e) => {
+                        setLocalData({ ...localData });
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            e.currentTarget.blur();
+                        }
+                    }}
+                >
                     {localData.spaces[activeSpace].name}
                 </h2>
 
                 <div className="content__notes-container">
                     {notes.map((note) => (
-                        <div className="content__note" key={note.id}>
-                            <h3 className="content__note-title">
-                                {note.title}
-                            </h3>
-
-                            <ul className="content__note-list">
-                                {note.items.map((item) => (
-                                    <li
-                                        className="content__note-item"
-                                        key={item.text}
-                                    >
-                                        <input
-                                            type="checkbox"
-                                            checked={item.checked}
-                                            onChange={() => {
-                                                item.checked = !item.checked;
-                                                setNotes([...notes]);
-                                            }}
-                                        />
-                                        <span>{item.text}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <Note
+                            note={note}
+                            notes={notes}
+                            setNotes={setNotes}
+                            activeSpace={activeSpace}
+                            key={note.id}
+                        />
                     ))}
 
-                    <div className="content__note content__add-note">
+                    <div
+                        className="content__note content__add-note"
+                        onClick={() => {
+                            notes.push({
+                                id: uuid(),
+                                title: "New note",
+                                items: [],
+                            });
+
+                            setLocalData({
+                                ...localData,
+                            });
+                        }}
+                    >
                         <p>+</p>
                     </div>
                 </div>
