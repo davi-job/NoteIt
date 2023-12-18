@@ -7,9 +7,11 @@ function Task({ item, notes, setNotes }) {
     const { localData, setLocalData } = useContext(DataContext);
 
     function editTask(id, text) {
+        // Find the note that contains the item
         for (const note of notes) {
             for (const item of note.items) {
                 if (item.id === id) {
+                    // Update the item
                     item.text = text;
                 }
             }
@@ -18,25 +20,20 @@ function Task({ item, notes, setNotes }) {
 
     function deleteTask(id) {
         // Create a new copy of the notes array
-        let newNotes = JSON.parse(JSON.stringify(notes));
+        let updatedNotes = notes;
 
-        for (const note of newNotes) {
+        // Find the note that contains the item
+        for (const note of updatedNotes) {
             let index = note.items.findIndex((item) => item.id === id);
             if (index !== -1) {
                 // Remove the item
                 note.items.splice(index, 1);
 
-                // Update the IDs of the remaining items
-                note.items.forEach((item, index) => {
-                    item.id = index;
-                });
-
                 break;
             }
         }
 
-        // Update the state with the new array
-        setNotes(newNotes);
+        setNotes(updatedNotes);
     }
 
     return (
@@ -66,10 +63,8 @@ function Task({ item, notes, setNotes }) {
                 onBlur={(e) => {
                     if (e.currentTarget.textContent === "") {
                         deleteTask(item.id);
+                        setLocalData({ ...localData });
                     }
-                    setLocalData({
-                        ...localData,
-                    });
                 }}
             >
                 {item.text}

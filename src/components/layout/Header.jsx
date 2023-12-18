@@ -8,6 +8,7 @@ function Header({ activeSpace, setActiveSpace }) {
     // Get spaces from localData
     const { localData, setLocalData } = useContext(DataContext);
 
+    // Set icon colors
     const iconColors = [
         "#7209b7",
         "#560bad",
@@ -25,6 +26,12 @@ function Header({ activeSpace, setActiveSpace }) {
     useEffect(() => {
         setSpaces(localData.spaces);
     }, [localData]);
+
+    // Update localData when spaces changes
+    useEffect(() => {
+        localData.spaces = spaces;
+        setLocalData({ ...localData });
+    }, [spaces]);
 
     return (
         <header className="header">
@@ -55,25 +62,53 @@ function Header({ activeSpace, setActiveSpace }) {
                             setActiveSpace(spaces.length - 1);
                         }}
                     >
-                        <span className="header__nav-icon">+</span>
-                        <button>New space</button>
+                        <div>
+                            <span className="header__nav-icon">+</span>
+                            <button>New space</button>
+                        </div>
                     </li>
 
                     {spaces.map((space, index) => (
                         <li
                             key={space.id}
                             className={`header__nav-item ${
-                                space.id === activeSpace ? "active" : ""
+                                index === activeSpace ? "active" : ""
                             }`}
-                            onClick={() => setActiveSpace(index)}
+                            onClick={() =>
+                                spaces[index] ? setActiveSpace(index) : null
+                            }
                         >
-                            <span
-                                className="header__nav-icon"
-                                style={{ backgroundColor: space.color }}
+                            <div>
+                                <span
+                                    className="header__nav-icon"
+                                    style={{ backgroundColor: space.color }}
+                                >
+                                    {space.name.charAt(0)}
+                                </span>
+
+                                <button>{space.name}</button>
+                            </div>
+
+                            <button
+                                className="content__space-delete"
+                                onClick={() => {
+                                    const updatedSpaces = [...spaces];
+
+                                    updatedSpaces.splice(index, 1);
+
+                                    setSpaces(updatedSpaces);
+                                    setActiveSpace(0);
+                                }}
                             >
-                                {space.name.charAt(0)}
-                            </span>
-                            <button>{space.name}</button>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    x="0px"
+                                    y="0px"
+                                    viewBox="0 0 50 50"
+                                >
+                                    <path d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"></path>
+                                </svg>
+                            </button>
                         </li>
                     ))}
                 </ul>

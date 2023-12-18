@@ -3,6 +3,7 @@ import React from "react";
 import { useState, createContext, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
+// Set initial data
 let data = {
     spaces: [
         {
@@ -41,11 +42,13 @@ const DataContext = createContext(null);
 
 // Create a provider component
 function DataProvider({ children }) {
+    // Get localData from Local Storage or use data
     const [localData, setLocalData] = useState(() => {
         const storedData = localStorage.getItem("localData");
         return storedData ? JSON.parse(storedData) : data;
     });
 
+    // Update localData in the Local Storage when localData changes
     useEffect(() => {
         localStorage.setItem("localData", JSON.stringify(localData));
         console.log("localData updated");

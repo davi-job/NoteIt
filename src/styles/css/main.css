@@ -190,18 +190,23 @@ body {
 .header nav .header__nav-list {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 0.8rem;
   list-style: none;
 }
 .header nav .header__nav-list .header__nav-item {
-  min-width: fit-content;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-radius: 16px;
-  gap: 1.2rem;
   padding: 0.6rem 1.2rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+}
+.header nav .header__nav-list .header__nav-item div {
+  display: flex;
+  gap: 1.2rem;
 }
 .header nav .header__nav-list .header__nav-item .header__nav-icon {
   width: 3.2rem;
@@ -216,13 +221,31 @@ body {
   font-size: 2.2rem;
   font-weight: 500;
 }
-.header nav .header__nav-list .header__nav-item button {
+.header nav .header__nav-list .header__nav-item button:not(.content__space-delete) {
   color: var(--text);
   flex: 0 0 auto;
   border: none;
   background: transparent;
   font-size: 1.6rem;
   cursor: inherit;
+}
+.header nav .header__nav-list .header__nav-item .content__space-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 10;
+}
+.header nav .header__nav-list .header__nav-item .content__space-delete svg {
+  height: 1.6rem;
+  stroke: var(--primary80);
+  fill: var(--primary80);
+}
+.header nav .header__nav-list .header__nav-item .content__space-delete svg:hover {
+  stroke: var(--primary);
+  fill: var(--primary);
 }
 .header nav .header__nav-list .header__nav-item:first-of-type .header__nav-icon {
   background-color: rgba(4, 6, 4, 0.4588235294);
@@ -267,6 +290,7 @@ body {
   background-color: var(--secondary25);
   width: 35rem;
   height: 30rem;
+  overflow: hidden;
 }
 .content .content__notes-container .content__note .content__note-title {
   font-size: 1.8rem;

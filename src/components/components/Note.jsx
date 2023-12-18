@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 
 import Task from "./Task";
 
-function Note({ note, notes, setNotes, activeSpace }) {
+function Note({ note, notes, setNotes }) {
     const { localData, setLocalData } = useContext(DataContext);
 
     return (
@@ -37,11 +37,6 @@ function Note({ note, notes, setNotes, activeSpace }) {
                 onClick={() => {
                     const updatedNotes = notes.filter((n) => n.id !== note.id);
                     setNotes(updatedNotes);
-
-                    const updatedSpaces = [...localData.spaces];
-                    updatedSpaces[activeSpace].notes = updatedNotes;
-
-                    setLocalData({ ...localData, spaces: updatedSpaces });
                 }}
             >
                 <svg
@@ -72,24 +67,23 @@ function Note({ note, notes, setNotes, activeSpace }) {
                     );
                 })}
 
-                {note.items.length < 6 && (
-                    <li
-                        className="content__note-add-task"
-                        onClick={() => {
-                            note.items.push({
-                                id: uuid(),
-                                text: "New task",
-                                checked: false,
-                            });
-                            setLocalData({
-                                ...localData,
-                            });
-                        }}
-                    >
-                        <p>+</p>
-                        <p>New task</p>
-                    </li>
-                )}
+                <li
+                    className="content__note-add-task"
+                    onClick={() => {
+                        note.items.push({
+                            id: uuid(),
+                            text: "New task",
+                            checked: false,
+                        });
+
+                        setLocalData({
+                            ...localData,
+                        });
+                    }}
+                >
+                    <p>+</p>
+                    <p>New task</p>
+                </li>
             </ul>
         </div>
     );
