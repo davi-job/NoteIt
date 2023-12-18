@@ -69,16 +69,13 @@ function Header({ activeSpace, setActiveSpace }) {
                     </li>
 
                     {spaces.map((space, index) => (
-                        <li
-                            key={space.id}
-                            className={`header__nav-item ${
-                                index === activeSpace ? "active" : ""
-                            }`}
-                            onClick={() =>
-                                spaces[index] ? setActiveSpace(index) : null
-                            }
-                        >
-                            <div>
+                        <li className="header__nav-item" key={space.id}>
+                            <div
+                                className={` ${
+                                    index === activeSpace ? "active" : ""
+                                }`}
+                                onClick={() => setActiveSpace(index)}
+                            >
                                 <span
                                     className="header__nav-icon"
                                     style={{ backgroundColor: space.color }}
@@ -89,26 +86,33 @@ function Header({ activeSpace, setActiveSpace }) {
                                 <button>{space.name}</button>
                             </div>
 
-                            <button
-                                className="content__space-delete"
-                                onClick={() => {
-                                    const updatedSpaces = [...spaces];
+                            {spaces.length > 1 && (
+                                <button
+                                    className="content__space-delete"
+                                    onClick={() => {
+                                        const updatedSpaces = [...spaces];
 
-                                    updatedSpaces.splice(index, 1);
+                                        updatedSpaces.splice(index, 1);
 
-                                    setSpaces(updatedSpaces);
-                                    setActiveSpace(0);
-                                }}
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    x="0px"
-                                    y="0px"
-                                    viewBox="0 0 50 50"
+                                        setSpaces(updatedSpaces);
+
+                                        if (index === spaces.length - 1) {
+                                            setActiveSpace(index - 1);
+                                        } else {
+                                            setActiveSpace(index);
+                                        }
+                                    }}
                                 >
-                                    <path d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"></path>
-                                </svg>
-                            </button>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        x="0px"
+                                        y="0px"
+                                        viewBox="0 0 50 50"
+                                    >
+                                        <path d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"></path>
+                                    </svg>
+                                </button>
+                            )}
                         </li>
                     ))}
                 </ul>
