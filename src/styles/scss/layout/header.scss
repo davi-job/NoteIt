@@ -34,6 +34,8 @@
             display: flex;
             flex-direction: column;
 
+            position: relative;
+
             width: 100%;
 
             gap: 0.8rem;
@@ -45,55 +47,66 @@
 
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-
-                border-radius: 16px;
-
-                padding: 0.6rem 1.2rem;
-
-                transition: all 0.2s ease-in-out;
-
-                cursor: pointer;
 
                 div {
+                    width: 100%;
+
                     display: flex;
                     gap: 1.2rem;
+
+                    border-radius: 16px;
+
+                    padding: 0.6rem 1.2rem;
+
+                    transition: all 0.2s ease-in-out;
+
+                    cursor: pointer;
+
+                    .header__nav-icon {
+                        width: 3.2rem;
+                        height: 3.2rem;
+
+                        flex: 0 0 3.2rem;
+
+                        border-radius: 12px;
+
+                        background-color: black;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        color: #fff;
+
+                        font-size: 2.2rem;
+                        font-weight: 500;
+                    }
+
+                    button {
+                        color: var(--text);
+
+                        flex: 0 0 auto;
+
+                        border: none;
+                        background: transparent;
+
+                        font-size: 1.6rem;
+
+                        cursor: inherit;
+                    }
                 }
 
-                .header__nav-icon {
-                    width: 3.2rem;
-                    height: 3.2rem;
+                div:hover,
+                div.active {
+                    background-color: var(--secondary50);
 
-                    flex: 0 0 3.2rem;
-
-                    border-radius: 12px;
-
-                    background-color: black;
-
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    color: #fff;
-
-                    font-size: 2.2rem;
-                    font-weight: 500;
-                }
-
-                button:not(.content__space-delete) {
-                    color: var(--text);
-
-                    flex: 0 0 auto;
-
-                    border: none;
-                    background: transparent;
-
-                    font-size: 1.6rem;
-
-                    cursor: inherit;
+                    box-shadow: inset 0 0 0 1px var(--primary50);
                 }
 
                 .content__space-delete {
+                    position: absolute;
+                    right: 1.5rem;
+
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -134,13 +147,6 @@
 
                     font-weight: 600;
                 }
-            }
-
-            .header__nav-item:hover,
-            .header__nav-item.active {
-                background-color: var(--secondary50);
-
-                box-shadow: inset 0 0 0 1px var(--primary50);
             }
         }
     }

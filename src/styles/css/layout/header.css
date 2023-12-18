@@ -21,6 +21,7 @@
 .header nav .header__nav-list {
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 100%;
   gap: 0.8rem;
   list-style: none;
@@ -29,17 +30,17 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+}
+.header nav .header__nav-list .header__nav-item div {
+  width: 100%;
+  display: flex;
+  gap: 1.2rem;
   border-radius: 16px;
   padding: 0.6rem 1.2rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-.header nav .header__nav-list .header__nav-item div {
-  display: flex;
-  gap: 1.2rem;
-}
-.header nav .header__nav-list .header__nav-item .header__nav-icon {
+.header nav .header__nav-list .header__nav-item div .header__nav-icon {
   width: 3.2rem;
   height: 3.2rem;
   flex: 0 0 3.2rem;
@@ -52,7 +53,7 @@
   font-size: 2.2rem;
   font-weight: 500;
 }
-.header nav .header__nav-list .header__nav-item button:not(.content__space-delete) {
+.header nav .header__nav-list .header__nav-item div button {
   color: var(--text);
   flex: 0 0 auto;
   border: none;
@@ -60,7 +61,14 @@
   font-size: 1.6rem;
   cursor: inherit;
 }
+.header nav .header__nav-list .header__nav-item div:hover,
+.header nav .header__nav-list .header__nav-item div.active {
+  background-color: var(--secondary50);
+  box-shadow: inset 0 0 0 1px var(--primary50);
+}
 .header nav .header__nav-list .header__nav-item .content__space-delete {
+  position: absolute;
+  right: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,11 +96,6 @@
 .header nav .header__nav-list .header__nav-item:first-of-type button {
   color: rgba(4, 6, 4, 0.4588235294);
   font-weight: 600;
-}
-.header nav .header__nav-list .header__nav-item:hover,
-.header nav .header__nav-list .header__nav-item.active {
-  background-color: var(--secondary50);
-  box-shadow: inset 0 0 0 1px var(--primary50);
 }
 
 /*# sourceMappingURL=header.css.map */
