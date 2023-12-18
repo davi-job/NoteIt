@@ -9,11 +9,19 @@ import Note from "../components/Note";
 function Content({ activeSpace }) {
     const { localData, setLocalData } = useContext(DataContext);
 
+    // Set notes to localData.spaces[activeSpace].notes
     const [notes, setNotes] = useState(localData.spaces[activeSpace].notes);
 
+    // Update notes when localData.spaces[activeSpace].notes changes
     useEffect(() => {
         setNotes(localData.spaces[activeSpace].notes);
     }, [localData, activeSpace]);
+
+    // Update localData when notes changes
+    useEffect(() => {
+        localData.spaces[activeSpace].notes = notes;
+        setLocalData({ ...localData });
+    }, [notes]);
 
     return (
         <section className="content">
@@ -60,9 +68,7 @@ function Content({ activeSpace }) {
                                 items: [],
                             });
 
-                            setLocalData({
-                                ...localData,
-                            });
+                            setNotes([...notes]);
                         }}
                     >
                         <p>+</p>
