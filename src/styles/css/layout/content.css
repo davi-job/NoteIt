@@ -74,6 +74,7 @@
   appearance: none;
   margin: 0;
   padding: 0;
+  flex: 0 0 1.8rem;
   font: inherit;
   color: var(--primary);
   background-color: transparent;

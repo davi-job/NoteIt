@@ -50,6 +50,7 @@ function Task({ item, notes, setNotes }) {
             />
 
             <div
+                style={{ wordBreak: "break-all" }}
                 spellCheck={false}
                 suppressContentEditableWarning={true}
                 contentEditable="true"
