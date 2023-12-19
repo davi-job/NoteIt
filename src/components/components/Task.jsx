@@ -63,8 +63,9 @@ function Task({ item, notes, setNotes }) {
                 onBlur={(e) => {
                     if (e.currentTarget.textContent === "") {
                         deleteTask(item.id);
-                        setLocalData({ ...localData });
                     }
+
+                    setLocalData({ ...localData });
                 }}
             >
                 {item.text}
