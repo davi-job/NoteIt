@@ -40,6 +40,7 @@ function Task({ item, notes, setNotes }) {
         <li className="content__note-item" key={item.id}>
             <input
                 type="checkbox"
+                aria-label="Check task"
                 checked={item.checked}
                 onChange={() => {
                     item.checked = !item.checked;

@@ -29,6 +29,7 @@ function Content({ activeSpace }) {
                 <div className="content__title-container">
                     <button
                         className="mobile__header-btn"
+                        aria-label="Open header"
                         onClick={() => {
                             document
                                 .querySelector(".header")

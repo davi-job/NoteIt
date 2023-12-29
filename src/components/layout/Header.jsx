@@ -47,6 +47,7 @@ function Header({ activeSpace, setActiveSpace }) {
             <div className="header__title-container">
                 <button
                     className="mobile__header-close-btn"
+                    aria-label="Close header"
                     onClick={() => {
                         document
                             .querySelector(".header")
