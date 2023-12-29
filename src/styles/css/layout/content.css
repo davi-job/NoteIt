@@ -4,11 +4,33 @@
   flex: 0 0 85%;
   overflow-y: auto;
 }
-.content .content__title {
+.content .content__title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3.2rem;
+}
+.content .content__title-container .mobile__header-btn {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  margin-right: 2.4rem;
+  margin-top: 0.2rem;
+}
+.content .content__title-container .mobile__header-btn svg {
+  width: 3.6rem;
+  height: 3.6rem;
+  stroke: var(--primary);
+  fill: var(--primary);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.content .content__title-container .content__title {
+  display: inline-block;
   font-size: 3.6rem;
   font-weight: 600;
   text-decoration: dashed underline var(--accent);
-  margin-bottom: 3.2rem;
 }
 .content .content__notes-container {
   display: flex;
