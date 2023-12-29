@@ -32,8 +32,8 @@
 
 ## Screenshots
 
-Home Interface:
-![NoteIT - Home](https://github.com/davi-job/NoteIT/public/github_imgs/noteit.webp)
+### **Home Interface:**
+![NoteIT - Home](https://github.com/davi-job/NoteIt/blob/master/public/github_imgs/noteit.webp)
 
-Data structure:
-![NoteIT - Data](https://github.com/davi-job/NoteIT/public/github_imgs/noteit-default-data.webp)
+### **Data structure:**
+![NoteIT - Data](https://github.com/davi-job/NoteIt/blob/master/public/github_imgs/noteit-default-data.webp)
