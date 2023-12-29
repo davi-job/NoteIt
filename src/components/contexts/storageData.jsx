@@ -3,7 +3,7 @@ import React from "react";
 import { useState, createContext, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
-// Deafult data
+// Default data
 let data = {
     spaces: [
         {
@@ -13,7 +13,7 @@ let data = {
             notes: [
                 {
                     id: uuid(),
-                    title: "This is a test note",
+                    title: "This is a note",
                     items: [
                         {
                             id: uuid(),
