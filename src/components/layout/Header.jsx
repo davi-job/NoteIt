@@ -33,9 +33,40 @@ function Header({ activeSpace, setActiveSpace }) {
         setLocalData({ ...localData });
     }, [spaces]);
 
+    // Close mobile header when activeSpace changes
+    useEffect(() => {
+        const headerElement = document.querySelector(".header");
+
+        if (headerElement.classList.contains("header--active")) {
+            headerElement.classList.remove("header--active");
+        }
+    }, [activeSpace]);
+
     return (
         <header className="header">
-            <h1 className="header__title">NoteIt</h1>
+            <div className="header__title-container">
+                <button
+                    className="mobile__header-close-btn"
+                    onClick={() => {
+                        document
+                            .querySelector(".header")
+                            .classList.remove("header--active");
+                    }}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        x="0px"
+                        y="0px"
+                        width="100"
+                        height="100"
+                        viewBox="0 0 50 50"
+                    >
+                        <path d="M 40.783203 7.2714844 A 2.0002 2.0002 0 0 0 39.386719 7.8867188 L 25.050781 22.222656 L 10.714844 7.8867188 A 2.0002 2.0002 0 0 0 9.2792969 7.2792969 A 2.0002 2.0002 0 0 0 7.8867188 10.714844 L 22.222656 25.050781 L 7.8867188 39.386719 A 2.0002 2.0002 0 1 0 10.714844 42.214844 L 25.050781 27.878906 L 39.386719 42.214844 A 2.0002 2.0002 0 1 0 42.214844 39.386719 L 27.878906 25.050781 L 42.214844 10.714844 A 2.0002 2.0002 0 0 0 40.783203 7.2714844 z"></path>
+                    </svg>
+                </button>
+
+                <h1 className="header__title">NoteIt</h1>
+            </div>
 
             <nav>
                 <h2 className="header__nav-title">Spaces</h2>

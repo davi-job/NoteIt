@@ -11,13 +11,46 @@
 
     flex: 1 0 300px;
 
-    .header__title {
-        color: var(--primary);
-
-        font-size: 6.4rem;
+    .header__title-container {
+        display: flex;
+        align-items: center;
 
         margin-bottom: 2.4rem;
-        margin-left: 1.2rem;
+
+        .mobile__header-close-btn {
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            border: none;
+            background-color: transparent;
+
+            margin-right: 1.2rem;
+            margin-top: 0.2rem;
+
+            svg {
+                width: 3.6rem;
+                height: 3.6rem;
+
+                stroke: var(--text);
+                fill: var(--text);
+
+                stroke-width: 5px;
+
+                transition: all 0.2s ease-in-out;
+
+                cursor: pointer;
+            }
+        }
+
+        .header__title {
+            color: var(--primary);
+
+            font-size: 6.4rem;
+
+            margin-left: 1.2rem;
+        }
     }
 
     nav {

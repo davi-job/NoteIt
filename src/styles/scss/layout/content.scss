@@ -7,13 +7,45 @@
 
     overflow-y: auto;
 
-    .content__title {
-        font-size: 3.6rem;
-        font-weight: 600;
-
-        text-decoration: dashed underline var(--accent);
+    .content__title-container {
+        display: flex;
+        align-items: center;
 
         margin-bottom: 3.2rem;
+
+        .mobile__header-btn {
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            border: none;
+            background-color: transparent;
+
+            margin-right: 2.4rem;
+            margin-top: 0.2rem;
+
+            svg {
+                width: 3.6rem;
+                height: 3.6rem;
+
+                stroke: var(--primary);
+                fill: var(--primary);
+
+                transition: all 0.2s ease-in-out;
+
+                cursor: pointer;
+            }
+        }
+
+        .content__title {
+            display: inline-block;
+
+            font-size: 3.6rem;
+            font-weight: 600;
+
+            text-decoration: dashed underline var(--accent);
+        }
     }
 
     .content__notes-container {
